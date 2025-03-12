@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botonera Minimalista</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        .botonera {
+            display: flex;
+            gap: 10px;
+        }
+        .boton {
+            padding: 10px 20px;
+            border: none;
+            background-color: #333;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .boton:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <audio id="corneta" src="sounds/DJ Airhorn Sound Effect 001.mp3"></audio>
+    <audio id="suscribite" src="sounds/Button press sound  Sonido de presionar boton.mp3"></audio>
+    <div class="botonera">
+        <button class="boton" onclick="playSound('corneta')">Cornudo</button>
+        <button class="boton" onclick="playSound('estupido')">Estúpido</button>
+        <button class="boton" onclick="playSound('suscribite')">Suscribite Bil!</button>
+    </div>
+    <script>
+        function playSound(id) {
+            document.getElementById(id).play();
+        }
+    </script>
+</body>
+</html>
