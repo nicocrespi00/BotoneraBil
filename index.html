@@ -8,14 +8,18 @@
         body {
             font-family: Arial, sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             height: 100vh;
             background-color: #f5f5f5;
+            margin: 0;
+            padding-top: 60px; /* Espacio para el navbar */
         }
         .botonera {
             display: flex;
             gap: 10px;
+            margin-top: 20px;
         }
         .boton {
             padding: 10px 20px;
@@ -32,18 +36,53 @@
     </style>
 </head>
 <body>
+    <div id="navbar-container"></div>
+
     <audio id="corneta" src="sounds/DJ Airhorn Sound Effect 001.mp3"></audio>
     <audio id="estupido" src="sounds/estupido.mp4"></audio>
     <audio id="suscribite" src="sounds/Button press sound  Sonido de presionar boton.mp3"></audio>
+    <audio id="lta" src="sounds/LTA.mp3"></audio>
+
+    <audio id="quevedo" src="sounds/bro-que-buena-informacion-quevedo.mp3"></audio>
+    <audio id="callese" src="sounds/callese-hombre-horrible.mp3"></audio>
+    <audio id="doh" src="sounds/doh_r4RZcVw.mp3"></audio>
+    <audio id="meaburro" src="sounds/me-aburro_1.mp3"></audio>
+
+    <audio id="goofy" src="sounds/goofy-ahh-sounds.mp3"></audio>
+    <audio id="pewpew" src="sounds/pew_pew-dknight556-1379997159.mp3"></audio>
+    <audio id="sad" src="sounds/tf_nemesis.mp3"></audio>
+    <audio id="tienesmensaje" src="sounds/tienes-un-mensajeee.mp3"></audio>
+
     <div class="botonera">
         <button class="boton" onclick="playSound('corneta')">Cornudo</button>
         <button class="boton" onclick="playSound('estupido')">Estúpido</button>
         <button class="boton" onclick="playSound('suscribite')">Suscribite Bil!</button>
+        <button class="boton" onclick="playSound('lta')">LTA!</button>
+
+        
+        <button class="boton" onclick="playSound('quevedo')">Que buena información! (Quevedo)</button>
+        <button class="boton" onclick="playSound('callese')">Cállese</button>
+        <button class="boton" onclick="playSound('doh')">DOH!</button>
+        <button class="boton" onclick="playSound('meaburro')">Me Aburro!</button>
+
+        
+        <button class="boton" onclick="playSound('goofy')">Goofy</button>
+        <button class="boton" onclick="playSound('pewpew')">Pew Pew</button>
+        <button class="boton" onclick="playSound('sad')">Sad</button>
+        <button class="boton" onclick="playSound('tienesmensaje')">Tienes un mensaje</button>
     </div>
+
     <script>
         function playSound(id) {
             document.getElementById(id).play();
         }
+
+        // Cargar el navbar dinámicamente
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-container').innerHTML = data;
+            });
     </script>
 </body>
 </html>
