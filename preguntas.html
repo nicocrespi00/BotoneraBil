@@ -66,19 +66,21 @@
 </head>
 <body>
     <div id="navbar-container"></div>
-    <div class="container">
-        <div>
-            <h2>Presencia y Angel</h2>
-            <p>
-                ¿Son lo mismo?
-            </p>
-        </div>
+    <div id="protected-content" style="display: none;">
+        <div class="container">
+            <div>
+                <h2>Presencia y Angel</h2>
+                <p>
+                    ¿Son lo mismo?
+                </p>
+            </div>
 
-        <div>
-            <h2>Facha y Percha</h2>
-            <p>
-                ¿Son lo mismo?
-            </p>
+            <div>
+                <h2>Facha y Percha</h2>
+                <p>
+                    ¿Son lo mismo?
+                </p>
+            </div>
         </div>
     </div>
 </body>
@@ -90,5 +92,12 @@
         .then(data => {
             document.getElementById('navbar-container').innerHTML = data;
         });
+
+        const clave = prompt("Ingrese la clave para ver el contenido:");
+        if (clave === "bil123") {
+            document.getElementById("protected-content").style.display = "block";
+        } else {
+            alert("Clave incorrecta. Acceso denegado.");
+        }
 </script>
 </html>

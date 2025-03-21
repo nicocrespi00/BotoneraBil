@@ -66,41 +66,49 @@
 </head>
 <body>
     <div id="navbar-container"></div>
-    <div class="container">
-        <div>
-            <h2>Fusilamiento</h2>
-            <p>
-                En algunos casos, se suele cargar algunas de las armas con salvas. De este modo, se crea un efecto de difusión de la responsabilidad entre los miembros del pelotón, que pueden pensar que el suyo no fue un disparo fatal. 
-                Si bien un tirador experto es capaz de saber cuándo un arma está cargada con salvas, debido al retroceso que experimenta, es habitual que psicológicamente se tienda a no prestar atención a dicho detalle.
-            </p>
-        </div>
+    <div id="protected-content" style="display: none;">
+        <div class="container">
+            <div>
+                <h2>Fusilamiento</h2>
+                <p>
+                    En algunos casos, se suele cargar algunas de las armas con salvas. De este modo, se crea un efecto de difusión de la responsabilidad entre los miembros del pelotón, que pueden pensar que el suyo no fue un disparo fatal. 
+                    Si bien un tirador experto es capaz de saber cuándo un arma está cargada con salvas, debido al retroceso que experimenta, es habitual que psicológicamente se tienda a no prestar atención a dicho detalle.
+                </p>
+            </div>
 
-        <div>
-            <h2>Muerte de Mussolini</h2>
-            <p>
-                Los cuerpos fueron llevados a Milán y abandonados en una plaza suburbana, la plaza de Loreto, para que una muchedumbre enfurecida los insultase y maltratase físicamente. 
-                Después fueron colgados boca abajo de una viga de metal sobre una gasolinera en la plaza. Los cadáveres fueron azotados, disparados y golpeados con martillos.
-            </p>
+            <div>
+                <h2>Muerte de Mussolini</h2>
+                <p>
+                    Los cuerpos fueron llevados a Milán y abandonados en una plaza suburbana, la plaza de Loreto, para que una muchedumbre enfurecida los insultase y maltratase físicamente. 
+                    Después fueron colgados boca abajo de una viga de metal sobre una gasolinera en la plaza. Los cadáveres fueron azotados, disparados y golpeados con martillos.
+                </p>
 
-            <div class="image-container">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Mussolini_e_Petacci_a_Piazzale_Loreto%2C_1945.jpg" alt="Mussolini colgado en la plaza Loreto">
-                <img src="https://imagenes.larazon.es/files/image_672_378/uploads/2023/04/28/67166e7ed1183.jpeg" alt="Cadáver de Mussolini en Milán">
+                <div class="image-container">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Mussolini_e_Petacci_a_Piazzale_Loreto%2C_1945.jpg" alt="Mussolini colgado en la plaza Loreto">
+                    <img src="https://imagenes.larazon.es/files/image_672_378/uploads/2023/04/28/67166e7ed1183.jpeg" alt="Cadáver de Mussolini en Milán">
+                </div>
+            </div>
+
+            <div>
+                <h2>Orina de ballenas</h2>
+                <p></p>
             </div>
         </div>
-
-        <div>
-            <h2>Orina de ballenas</h2>
-            <p>
-            </p>
-        </div>
     </div>
+
+    <script>
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-container').innerHTML = data;
+            });
+
+        // Pedir clave antes de mostrar contenido
+        const clave = prompt("Ingrese la clave para ver el contenido:");
+        if (clave === "bil123") {
+            document.getElementById("protected-content").style.display = "block";
+        } else {
+            alert("Clave incorrecta. Acceso denegado.");
+        }
+    </script>
 </body>
-    
-<script>
-    fetch('navbar.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('navbar-container').innerHTML = data;
-        });
-</script>
-</html>
