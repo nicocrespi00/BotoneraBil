@@ -18,20 +18,38 @@
         }
         .botonera {
             display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 10px;
             margin-top: 20px;
+            max-width: 90%;
         }
         .boton {
-            padding: 10px 20px;
+            padding: 12px 20px;
             border: none;
             background-color: #333;
             color: white;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             transition: background 0.3s;
+            font-size: 1rem;
+            min-width: 150px;
+            text-align: center;
         }
         .boton:hover {
             background-color: #555;
+        }
+
+        /* Responsivo */
+        @media (max-width: 600px) {
+            .boton {
+                width: 100%;
+                font-size: 0.9rem;
+                padding: 10px;
+            }
+            .botonera {
+                gap: 8px;
+            }
         }
     </style>
 </head>
@@ -59,13 +77,11 @@
         <button class="boton" onclick="playSound('suscribite')">Suscribite Bil!</button>
         <button class="boton" onclick="playSound('lta')">LTA!</button>
 
-        
         <button class="boton" onclick="playSound('quevedo')">Que buena información! (Quevedo)</button>
         <button class="boton" onclick="playSound('callese')">Cállese</button>
         <button class="boton" onclick="playSound('doh')">DOH!</button>
         <button class="boton" onclick="playSound('meaburro')">Me Aburro!</button>
 
-        
         <button class="boton" onclick="playSound('goofy')">Goofy</button>
         <button class="boton" onclick="playSound('pewpew')">Pew Pew</button>
         <button class="boton" onclick="playSound('sad')">Sad</button>
@@ -74,7 +90,9 @@
 
     <script>
         function playSound(id) {
-            document.getElementById(id).play();
+            let sound = document.getElementById(id);
+            sound.currentTime = 0; // Reiniciar el audio antes de reproducirlo
+            sound.play();
         }
 
         // Cargar el navbar dinámicamente
