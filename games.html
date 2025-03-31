@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego del Número Misterioso</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .boton {
+            padding: 10px 20px;
+            border: none;
+            background-color: #333;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .boton:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-container"></div>
+    <div class="container" id="protected-content" style="display: none;"> 
+        <h2>Juego del Número Misterioso</h2>
+        <p>Se genera un número aleatorio del 1 al 10. Un jugador hará preguntas como "¿Qué gusto de empanada sería este número?". Los demás sí conocen el número y pueden responder. Al final, el jugador deberá adivinarlo.</p>
+        <label for="participantes">Cantidad de Participantes:</label>
+        <input type="number" id="participantes" min="2" value="3">
+        <label for="rondas">Cantidad de Rondas:</label>
+        <input type="number" id="rondas" min="1" value="5">
+        <button class="boton" onclick="iniciarJuego()">Iniciar Juego</button>
+        <h3 id="numero-misterioso" style="display:none;"></h3>
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-container').innerHTML = data;
+            });
+
+        // Pedir clave antes de mostrar contenido
+        const clave = prompt("Ingrese la clave para ver el contenido:");
+        if (clave === "bil123") {
+            document.getElementById("protected-content").style.display = "block";
+        } else {
+            alert("Clave incorrecta. Acceso denegado.");
+        }
+
+        let numeroMisterioso;
+        let rondaActual = 0;
+        let totalRondas = 0;
+        let puntaje = 0;
+        let pistarineitor = 0;
+
+        function iniciarJuego() {
+            totalRondas = parseInt(document.getElementById("rondas").value);
+            rondaActual = 1;
+            puntaje = 0;
+            pistarineitor = 0;
+            siguienteRonda();
+        }
+
+        function siguienteRonda() {
+            if (rondaActual > 1) {
+                document.getElementById("resultado").innerText = `Sconnerismo: ${puntaje} - Pistarineitor: ${pistarineitor}`;
+                return;
+            }
+            numeroMisterioso = Math.floor(Math.random() * 10) + 1;
+            document.getElementById("numero-misterioso").innerText = `Número Bilterioso: ${numeroMisterioso}`;
+            document.getElementById("numero-misterioso").style.display = "block";
+            setTimeout(() => {
+                let adivinanza = prompt(`Ronda ${rondaActual}: Ingresa la suposición (1-10)`);
+                if (parseInt(adivinanza) === numeroMisterioso) {
+                    alert("¡Correcto! Todos ganan un punto.");
+                    puntaje++;
+                } else {
+                    alert("Incorrecto. Pistarineitor suma un punto.");
+                    pistarineitor++;
+                }
+                rondaActual++;
+                setTimeout(siguienteRonda, 1000);
+            }, 1000);
+            
+        }
+    </script>
+</body>
+</html>
